@@ -14,6 +14,7 @@ import os
 from pathlib import Path
 
 import environ
+import django_on_heroku
 
 env = environ.Env(
     # set casting, default value
@@ -37,6 +38,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'registration',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -119,7 +121,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
+STATICFILES_DIR = [
     BASE_DIR / 'static',
 ]
 
@@ -138,3 +140,6 @@ INTERNAL_IPS = [
 REGISTRATION_OPEN = True
 
 SIMPLE_BACKEND_REDIRECT_URL = '/'
+
+django_on_heroku.settings(locals())
+del DATABASES['default']['OPTIONS']['sslmode']
