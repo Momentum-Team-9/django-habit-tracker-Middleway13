@@ -20,7 +20,7 @@ class Habit(models.Model):
     def __str__(self):
         return f"{self.goal}"
 
-class DailyResults (models.Model):
+class DailyResult (models.Model):
     habit= models.ForeignKey(Habit, on_delete=models.CASCADE, related_name='results', null=True)
     results = models.PositiveIntegerField()
     date = models.DateField(default=date.today)
