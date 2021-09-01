@@ -7,7 +7,7 @@ class UserAdmin(admin.ModelAdmin):
 
 @admin.register(Habit)
 class HabitAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['goal', 'created_date', 'created_by']
 
 @admin.register(DailyResult)
 class DailyResultAdmin(admin.ModelAdmin):
