@@ -29,5 +29,5 @@ class DailyResult (models.Model):
             UniqueConstraint(fields=['habit', 'date'], name='daily_record')
         ]
         
-        def __str__(self):
-            return f"{self.date} {self.habit}"
+    def __str__(self):
+        return f"{self.habit}"
