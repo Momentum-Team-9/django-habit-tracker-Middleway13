@@ -11,4 +11,4 @@ class HabitAdmin(admin.ModelAdmin):
 
 @admin.register(DailyResult)
 class DailyResultAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['habit', 'results', 'date']
