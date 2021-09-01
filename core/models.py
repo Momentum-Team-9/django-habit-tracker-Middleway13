@@ -21,7 +21,7 @@ class Habit(models.Model):
         return f"{self.goal}"
 
 class DailyResult (models.Model):
-    habit= models.ForeignKey(Habit, on_delete=models.CASCADE, related_name='results', null=True)
+    habit = models.ForeignKey(Habit, on_delete=models.CASCADE, related_name='results', null=True)
     results = models.PositiveIntegerField()
     date = models.DateField(default=date.today)
     class Meta:
