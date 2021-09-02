@@ -12,7 +12,7 @@ def home(request):
 @login_required
 def list_habits(request):
     user = request.user
-    habits = Habit.objects.filter(creator=user)
+    habits = Habit.objects.filter(created_by=user)
     return render(request, 'habits/list_habits.html', {'habits': habits})
 
 @login_required
