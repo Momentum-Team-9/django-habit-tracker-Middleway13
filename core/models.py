@@ -12,7 +12,6 @@ class User(AbstractUser):
 
 class Habit(models.Model):
     goal = models.CharField(max_length=100)
-    target = models.TextField()
     created_date = models.DateField(default=date.today)
     created_by = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='habits')
