@@ -38,10 +38,6 @@ INSTALLED_APPS = [
     'core',
 ]
 
-ACCOUNT_ACTIVATION_DAYS = 7
-
-REGISTRATION_AUTO_LOGIN = False
-
 MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -131,7 +127,13 @@ INTERNAL_IPS = [
 
 REGISTRATION_OPEN = True
 
+LOGIN_REDIRECT_URL = '/'
+
 SIMPLE_BACKEND_REDIRECT_URL = '/'
+
+ACCOUNT_ACTIVATION_DAYS = 7
+
+REGISTRATION_AUTO_LOGIN = False
 
 django_on_heroku.settings(locals())
 del DATABASES['default']['OPTIONS']['sslmode']
