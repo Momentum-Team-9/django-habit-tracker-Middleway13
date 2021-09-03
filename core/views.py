@@ -4,6 +4,7 @@ from django.http import HttpResponse
 
 from core.models import Habit, DailyResult
 
+
 def home(request):
     if request.user.is_authenticated:
         return redirect(to='list_habits')
