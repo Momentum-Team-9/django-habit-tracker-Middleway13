@@ -13,6 +13,10 @@
             <a href="{% url 'home' %}">HABIT TRACKER</a>
         </div>
         <div>
+            {% if request.user.pk != None %}
+            <a href="{% url 'new_habit' %}">Create New Habit</a>
+            {% endif %}</div>
+        <div>
             {% if request.user.pk == None %}
             <div class="buttons">
                 <a class="button is-light" href="/accounts/login">Log in</a>

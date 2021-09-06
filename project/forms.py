@@ -5,7 +5,7 @@ from core.models import Habit, DailyResult
 class HabitForm(forms.ModelForm):
     class Meta:
         model = Habit
-        fields = ['goal', 'created_date', 'created_by']
+        fields = ['goal', 'created_date']
 
 
 class DailyResultForm(forms.ModelForm):
