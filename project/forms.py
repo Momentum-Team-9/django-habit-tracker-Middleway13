@@ -7,7 +7,6 @@ class HabitForm(forms.ModelForm):
         model = Habit
         fields = ['goal', 'created_date']
 
-
 class DailyResultForm(forms.ModelForm):
     class Meta:
         model = DailyResult
