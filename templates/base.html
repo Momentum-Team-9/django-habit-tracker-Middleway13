@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 </head>
 <body>
-    <section class="container">
+    <section>
         <div>
             <a href="{% url 'home' %}">HABIT TRACKER</a>
         </div>
@@ -31,7 +31,7 @@
             {% endif %}
         </div>
     </section>
-    <section class="container">
+    <section>
         {% block content %} {% endblock %}
     </section>
 </body>

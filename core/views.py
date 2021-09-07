@@ -3,15 +3,15 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponse
 
-from core.models import Habit, DailyResult
+from core.models import User, Habit, DailyResult
 from project.forms import HabitForm
 
 
 def home(request):
-    users = User.object.all()
+    users = User.objects.all()
     if request.user.is_authenticated:
         return redirect(to='list_habits')
-    return render(request, 'habits/home.html', {"users": users})
+    return render(request, 'habits/home.html', {'users': users})
 
 @login_required
 def list_habits(request):
@@ -27,31 +27,23 @@ def view_habit(request, pk):
     
 @login_required
 def new_habit(request):
-    if request.method == "GET":
+    if request.method == 'GET':
         form = HabitForm()
     else:
         form = HabitForm(data=request.POST)
         if form.is_valid():
             habit = form.save(commit=False)
             habit.save()
-            messages.success(request, 'New habit successfully created!')
-            return redirect(to="list_habits")
+#           messages.success(request, 'New habit successfully created!')
+            return redirect('list_habits')
         
     return render(request, 'habits/new_habit.html', {'form': form})
     
-    
-    
-    
-    
-    
-    
-#    if request.method == "GET":
-#        form = HabitForm()
-#    else:
-#        form = HabitForm(data=request.POST)
-#        if form.is_valid():
-#            habit = form.save(commit=False)
-#            habit.save()
-#            return redirect(to="list_habits")
-#
-#    return render(request, "habits/new_habit.html", {"form": form})
+@login_required
+def delete_habit(request, pk):
+    habit = get_object_or_404(Habit, pk=pk)
+    if request.method == 'POST':
+        habit.delete()
+        return redirect('list_habits')
+
+    return render(request, 'habits/delete_habit.html', {'habit': habit})

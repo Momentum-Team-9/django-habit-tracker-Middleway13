@@ -1,17 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
 {% for habit in habits %}
-<div class="card">
-    <div class="card-content">
-        {% if habit.goal %}
-        <div class="content">
-            <div><strong>Goal: </strong>{{ habit.goal }}</div>
-        {% endif %} 
-        <br>
-        {% if habit.created_date %}
-            <div class="content is-italic is-success is-size-7">Created on {{ habit.created_date}}</div>
-        {% endif %}
-        </div>
-    </div>
+<div class='box'>
+    {% if habit.goal %}
+    <div><strong>Goal: </strong>{{ habit.goal }}</div>
+    {% endif %} 
+    <br>
+    {% if habit.created_date %}
+    <div><strong>Created: </strong>{{ habit.created_date}}</div>
+    {% endif %}
+    <a href="{% url 'delete_habit' pk=habit.pk %}">Delete</a>
+    <a href="{% url 'view_habit' pk=habit.pk %}">Details</a>
+</div>
 {% endfor %}
 {% endblock %}
