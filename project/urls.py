@@ -11,6 +11,7 @@ urlpatterns = [
     path('habits/<int:pk>/', habit_views.view_habit, name='view_habit'),
     path('habits/new', habit_views.new_habit, name='new_habit'),
     path('habits/<int:pk>/delete/', habit_views.delete_habit, name='delete_habit'),
+    path('habits/<int:pk>/edit/', habit_views.edit_habit, name='edit_habit'),
     path('admin/', admin.site.urls),
 ]
 

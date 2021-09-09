@@ -5,10 +5,10 @@
     {% if habit.goal %}
     <div><strong>Goal: </strong>{{ habit.goal }}</div>
     {% endif %} 
-    <br>
     {% if habit.created_date %}
     <div><strong>Created: </strong>{{ habit.created_date}}</div>
     {% endif %}
+    <br>
     <a href="{% url 'delete_habit' pk=habit.pk %}">Delete</a>
     <a href="{% url 'view_habit' pk=habit.pk %}">Details</a>
 </div>
