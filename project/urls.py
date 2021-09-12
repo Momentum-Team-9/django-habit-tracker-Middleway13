@@ -19,7 +19,6 @@ urlpatterns = [
     path('habits/<int:pk>/delete/', habit_views.delete_habit, name='delete_habit'),
     path('habits/<int:pk>/edit/', habit_views.edit_habit, name='edit_habit'),
     path('admin/', admin.site.urls),
-    path("api-auth/", include("rest_framework.urls")),
 ] + recipe_router.urls
 
 if settings.DEBUG:
