@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.http import HttpResponse
 
 from core.models import User, Habit, DailyResult
-from project.forms import HabitForm
+from project.forms import HabitForm, DailyResultForm
 
 
 def home(request):
@@ -22,8 +22,7 @@ def list_habits(request):
 @login_required
 def view_habit(request, pk):
     habit = get_object_or_404(Habit, pk=pk)
-    return render(
-        request, 'habits/view_habit.html', {'habit': habit, 'pk': pk})
+    return render(request, 'habits/view_habit.html', {'habit': habit, 'pk': pk})
     
 @login_required
 def new_habit(request):

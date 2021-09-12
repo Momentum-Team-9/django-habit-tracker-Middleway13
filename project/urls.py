@@ -1,8 +1,14 @@
 from django.contrib import admin
 from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import include, path
 
 from core import views as habit_views
+from rest_framework.routers import SimpleRouter
+from api.views import HabitViewSet
+
+recipe_router = SimpleRouter()
+recipe_router.register("api/habits", HabitViewSet, basename="habit")
 
 urlpatterns = [
     path('', habit_views.home, name='home'),
@@ -13,7 +19,8 @@ urlpatterns = [
     path('habits/<int:pk>/delete/', habit_views.delete_habit, name='delete_habit'),
     path('habits/<int:pk>/edit/', habit_views.edit_habit, name='edit_habit'),
     path('admin/', admin.site.urls),
-]
+    path("api-auth/", include("rest_framework.urls")),
+] + recipe_router.urls
 
 if settings.DEBUG:
     import debug_toolbar
