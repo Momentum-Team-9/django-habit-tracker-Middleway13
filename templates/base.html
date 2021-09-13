@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Habit Tracker</title>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css'>
+</head>
+<body>
+    <section>
+        <div>
+            <a href="{% url 'home' %}">HABIT TRACKER</a>
+        </div>
+        <div>
+            {% if request.user.pk != None %}
+            <a href="{% url 'new_habit' %}">Create New Habit</a>
+            {% endif %}</div>
+        <div>
+            {% if request.user.pk == None %}
+            <div class='buttons'>
+                <a class="button is-light" href='/accounts/login'>Log in</a>
+            </div>
+            {% endif %}
+        </div>
+        <div>
+            {% if request.user.pk != None %}
+            <div class='buttons'> 
+                <a class="button is-light" href='/accounts/logout'>Log out</a>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+    <section>
+        {% block content %} {% endblock %}
+    </section>
+</body>
+</html>

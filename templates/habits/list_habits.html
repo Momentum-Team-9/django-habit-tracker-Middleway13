@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+{% for habit in habits %}
+<div class='box'>
+    {% if habit.goal %}
+    <div><strong>Goal: </strong>{{ habit.goal }}</div>
+    {% endif %} 
+    {% if habit.created_date %}
+    <div><strong>Created: </strong>{{ habit.created_date}}</div>
+    {% endif %}
+    <br>
+    <a href="{% url 'delete_habit' pk=habit.pk %}">Delete</a>
+    <a href="{% url 'view_habit' pk=habit.pk %}">Details</a>
+</div>
+{% endfor %}
+{% endblock %}

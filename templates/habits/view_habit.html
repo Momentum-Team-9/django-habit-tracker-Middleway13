@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+<h1>Habit Details:</h1>
+<section>
+    {% if habit.goal %}
+    <h3><strong>Goal: </strong>{{ habit.goal }}</h3>
+    {% endif %} 
+    {% if habit.created_date %}
+    <h3><strong>Created: </strong>{{ habit.created_date}}</h3>
+    {% endif %}
+</section>
+<br>
+<div>
+    <a href="{% url 'edit_habit' pk=habit.pk %}">Edit</a><br />
+    <a href="{% url 'list_habits' %}">Return to Habits</a></p>
+</div>
+{% endblock content %}

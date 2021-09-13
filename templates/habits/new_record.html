@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section>
+    <h1 class="title">Create a new record at {% now "SHORT_DATETIME_FORMAT" %}</h1>
+    <p class="subtitle"><a href="{% url 'list_habits' %}" class="has-text-grey">Return to Habits</a></p>
+</section>
+
+{# Display a form #}
+<div>
+    <form class="form" action="{% url 'new_record' habit_pk=habit.pk %}" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <div class="field">
+    <button type="submit" class="button is-primary">Save</button>
+    </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<section>
+    <h1><strong>Edit Habit:</strong></h1>
+</section>
+<div>
+    <form class="form" action="{% url 'edit_habit' pk=habit.pk %}" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <div>
+            <button type='submit'>Update</button>
+        </div>
+        </form>
+        <div>
+            <a href="{% url 'list_habits' %}"  class="button has-text-danger">Cancel</a></div>
+        </div>
+{% endblock %}
